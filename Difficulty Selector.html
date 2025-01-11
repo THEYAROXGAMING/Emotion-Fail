@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difficulty Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .triangle {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid red;
+            transform: translateY(-50%);
+            transition: top 0.2s;
+        }
+
+        .option {
+            font-size: 24px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>DIFFICULTY:</h1>
+    <div class="container">
+        <div class="triangle" id="triangle"></div>
+        <div class="option" data-link="404 Glitch.html">EASY</div>
+        <div class="option" data-link="404 Glitch.html">NORMAL</div>
+        <div class="option" data-link="404 Glitch.html">HARD</div>
+        <div class="option" data-link="404 Glitch.html">IMPOSSIBLE</div>
+        <div class="option" data-link="404 Glitch.html">MY LIFE</div>
+    </div>
+
+    <script>
+        const triangle = document.getElementById('triangle');
+        const options = document.querySelectorAll('.option');
+
+        options.forEach((option, index) => {
+            option.addEventListener('mouseover', () => {
+                const optionHeight = option.offsetHeight;
+                triangle.style.top = `${index * (optionHeight + 20) + optionHeight / 2}px`;
+            });
+
+            option.addEventListener('click', () => {
+                const link = option.getAttribute('data-link');
+                window.location.href = link;
+            });
+        });
+    </script>
+</body>
+</html>

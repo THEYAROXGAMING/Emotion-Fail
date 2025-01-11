@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+        }
+    </style>
+    <script>
+        function handleResponse(response) {
+            const message = document.getElementById('response-message');
+            if (response === 'YES') {
+                message.innerText = 'A brave choice! True love awaits those who dare to try again.';
+                setTimeout(() => {
+                    window.location.href = 'Loading Screen.html'; // Redirect to the YES page
+                }, 2000); // 2-second delay before redirect
+            } else {
+                message.innerText = 'No it is! Sometimes, stepping back is the first step forward.';
+                setTimeout(() => {
+                    window.location.href = 'End Credits.html'; // Redirect to the NO page
+                }, 2000); // 2-second delay before redirect
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+    <div class="text-center">
+        <h1 class="text-4xl md:text-6xl">GAME OVER</h1>
+        <p class="mt-4 text-lg md:text-2xl">TRY LOVING AGAIN?</p>
+        <div class="mt-4">
+            <button onclick="handleResponse('YES')" class="bg-white text-black px-4 py-2 m-2">YES</button>
+            <button onclick="handleResponse('NO')" class="bg-white text-black px-4 py-2 m-2">NO</button>
+        </div>
+        <p id="response-message" class="mt-4 text-lg md:text-2xl"></p>
+    </div>
+</body>
+</html>
